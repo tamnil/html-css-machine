@@ -1,0 +1,10 @@
+/* not machine: */
+
+#a:not(:checked) ~ .result:after  {
+
+    content:"true";
+    /* display:none; */
+    /* background:#000; */
+
+}
+
