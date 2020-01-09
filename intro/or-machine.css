@@ -1,0 +1,55 @@
+/* And operator: */
+
+.b{
+    display:none;
+}
+
+#result-b:after{
+content:"true"
+}
+
+#result-nb:after{
+content:"false"
+}
+
+#a:not(:checked) ~ .b  {
+    display:none;
+}
+
+/*
+if a is true  then show #b
+ */
+#a:checked ~ #b  {
+    content:"false";
+    display:block;
+}
+
+#a:checked ~ #result-nb  {
+     background:#a00;
+     display:none;
+}
+/*
+else show not b (#nb)
+ */
+
+#a:not(:checked) ~ #nb  {
+    display:block;
+}
+#a:not(:checked) ~ #result-b  {
+     background:#a00;
+     display:none;
+}
+
+
+
+/* now we are in the b stage of stack computation */
+
+
+#b:checked ~ #result-b:after {
+ content:"false";
+}
+
+#nb:checked ~ #result-nb:after {
+ content:"true";
+}
+

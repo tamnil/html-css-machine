@@ -1,66 +1,63 @@
-/* And operator: */
 
-.b{
-    display:none;
+
+#teste[value="teste"]{
+background:#a00;
+
 }
 
-#a:not(:checked) ~ .b  {
-    display:none;
+
+.code{
+
+display:none;
 }
 
-/*
-if a is true  then show #b
- */
-#a:checked ~ #b  {
-    content:"false";
+
+
+.code *{
+
+display:none;
+}
+
+.code .visible{
+
+display:block;
+}
+
+:target{
+display:block;
+}
+
+
+
+/****************** logical functions **********/
+
+/* NOT */
+/* if a1 is true then return false */
+.not .a1{
+display:block;
+}
+.a1.proccess:checked ~ .result{
     display:block;
 }
 
-#a:checked ~ #result-nb  {
-     background:#a00;
-     display:none;
-}
-/*
-else show not b (#nb)
- */
-
-#a:not(:checked) ~ #nb  {
-    display:block;
-}
-#a:not(:checked) ~ #result-b  {
-     background:#a00;
-     display:none;
+.a1.proccess:checked {
+    /* content:"0" */
+    display:none;
 }
 
 
-
-/* now we are in the b stage of stack computation */
-
-#b:not(:checked) ~ #result:after{
-
-    content:"false";
+.a1.field:checked ~ .result:after{
+    content:"0";
 }
 
-#b:checked ~ #result:after{
-    content:"true";
+.a1.field:not(:checked) ~ .result:after{
+    content:"1";
 }
 
+/* hide proccessed fields */
 
-#b:not(:checked) ~ #result-b:after{
-    content:"false";
+
+
+.a1.proccess:checked ~ .a1{
+display:none;
 }
-
-#b:checked ~ #result-b:after{
-    content:"true";
-}
-
-
-
-#nb:not(:checked) ~ #result-nb:after{
-    content:"true";
-}
-
-#nb:checked ~ #result-nb:after{
-    content:"false";
-}
-

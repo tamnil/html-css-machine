@@ -1,0 +1,107 @@
+/* not machine: */
+
+
+
+/* 
+
+initial setup
+
+*/
+
+
+section{
+display:none;
+}
+
+:target{
+display:block;
+}
+
+#return-not:after {
+ content:"error";
+}
+
+.return{
+/* display:none; */
+}
+
+/* not operator */
+
+#not>.a:checked ~ .return:after  {
+    content:"false";
+}
+
+
+#not>.a:not(:checked) ~ .return:after  {
+
+    content:"true";
+    /* display:none; */
+    /* background:#000; */
+
+}
+#not>.proccess:checked ~ .return {
+
+    display:block;
+}
+
+
+
+
+/* And operator: */
+
+/*
+if a is true  then show #b
+ */
+#a-and:checked ~ #b-and  {
+    content:"false";
+    display:block;
+}
+
+#a-and:checked ~ #result-nb  {
+     background:#a00;
+     display:none;
+}
+/*
+else show not b (#nb)
+ */
+
+#a-and:not(:checked) ~ #nb-and  {
+    display:block;
+}
+#a-and:not(:checked) ~ #result-b-and  {
+     background:#a00;
+     display:none;
+}
+
+
+
+/* now we are in the b stage of stack computation */
+
+#b:not(:checked) ~ #result:after{
+
+    content:"false";
+}
+
+#b:checked ~ #result:after{
+    content:"true";
+}
+
+
+#b:not(:checked) ~ #result-b:after{
+    content:"false";
+}
+
+#b:checked ~ #result-b:after{
+    content:"true";
+}
+
+
+
+#nb:not(:checked) ~ #result-nb:after{
+    content:"true";
+}
+
+#nb:checked ~ #result-nb:after{
+    content:"false";
+}
+
